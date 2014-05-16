@@ -190,7 +190,7 @@ getaddr6() {
 addtable() {
 	local table=$1
 	# find lowest available number
-	ids=$(awk '/^[[:space:]]*[[:digit:]]+[[:space:]]+[[:alnum:]]+/ {print $1}' /etc/iproute2/rt_tables | sort -n)
+	ids=$(awk '/^[ \t]*[0-9]+[ \t]+[^ \t]+/ {print $1}' /etc/iproute2/rt_tables | sort -n)
 	num=0
 	for id in $ids; do
 		if [ $id -gt $num ]; then
